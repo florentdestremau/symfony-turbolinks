@@ -23,7 +23,7 @@
             <pre>Your transaction token: {{ token }}</pre>
         {% endif %}
         {% if data %}
-            <pre>Your booking data: {{ dump(data) }}</pre>
+            <pre>Your booking data: {{ data|json_encode(constant('JSON_PRETTY_PRINT')) }}</pre>
         {% endif %}
         <a href="/">Go to static</a>
 

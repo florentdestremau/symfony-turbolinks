@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
+use Helthe\Component\Turbolinks\Turbolinks;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class StaticController extends AbstractController
 {
@@ -27,8 +30,6 @@ class StaticController extends AbstractController
      */
     public function index2(Request $request): Response
     {
-        sleep(2);
-
         return $this->render(
             'static/index-2.html.twig',
             [
@@ -44,8 +45,14 @@ class StaticController extends AbstractController
      */
     public function redirectToIndex2(): Response
     {
-        sleep(1);
+        $this->addFlash('success', 'Thank you');
 
-        return $this->redirectToRoute('redirect_to_2', ['token' => uniqid('', true)]);
+        return new RedirectResponse(
+            $this->generateUrl(
+                'static-2',
+                ['token' => substr(chunk_split(bin2hex(random_bytes(12)), 4, '-'), 0, -1)],
+                UrlGeneratorInterface::ABSOLUTE_URL
+            )
+        );
     }
 }

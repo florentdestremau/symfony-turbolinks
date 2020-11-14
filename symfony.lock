@@ -17,6 +17,9 @@
     "doctrine/lexer": {
         "version": "1.2.1"
     },
+    "helthe/turbolinks": {
+        "version": "3.0.0"
+    },
     "nikic/php-parser": {
         "version": "v4.10.2"
     },
@@ -55,6 +58,9 @@
         "files": [
             "bin/console"
         ]
+    },
+    "symfony/debug-pack": {
+        "version": "v1.0.9"
     },
     "symfony/dependency-injection": {
         "version": "v5.1.8"
@@ -144,6 +150,9 @@
     },
     "symfony/polyfill-php80": {
         "version": "v1.20.0"
+    },
+    "symfony/profiler-pack": {
+        "version": "v1.0.5"
     },
     "symfony/routing": {
         "version": "5.1",

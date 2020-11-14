@@ -34,8 +34,8 @@ class StaticController extends AbstractController
             'static/index-2.html.twig',
             [
                 'controller_name' => 'StaticController',
-                'data'            => random_int(50, 40000),
                 'token'           => $request->query->get('token'),
+                'data'           => $request->query->get('data'),
             ]
         );
     }

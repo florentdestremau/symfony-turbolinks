@@ -3,29 +3,61 @@
 {% block title %}Hello StaticController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <style>
+        .example-wrapper {
+            margin: 1em auto;
+            max-width: 800px;
+            width: 95%;
+            font: 18px/1.5 sans-serif;
+        }
 
-<div class="example-wrapper">
+        .example-wrapper code {
+            background: #F5F5F5;
+            padding: 2px 6px;
+        }
+    </style>
 
-    <h1>Hello {{ controller_name }}! ✅</h1>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-    <p>
-    <a href="{{ path('static-2') }}">Go to static Two</a>
-    <a href="{{ path('redirect_to_2') }}">Go to Redirect static Two</a>
-  </p>
+    <div class="example-wrapper">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/florent/dev/turbolink-test/src/Controller/StaticController.php'|file_link(0) }}">src/Controller/StaticController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/florent/dev/turbolink-test/templates/static/index.html.twig'|file_link(0) }}">templates/static/index.html.twig</a></code></li>
-    </ul>
-</div>
+        <h1>Hello {{ controller_name }}! ✅</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.
+        </p>
+        <ul>
+
+            <li><a href="{{ path('static-2') }}">Go to static Two</a></li>
+            <li><a href="{{ path('redirect_to_2') }}">Go to Redirect static Two</a></li>
+        </ul>
+        <p>
+        </p>
+
+        <p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#booking_modal">
+                Book
+            </button>
+
+        </p>
+        <!-- Modal -->
+        <div class="modal fade" id="booking_modal" tabindex="-1" aria-labelledby="booking_modalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="application/javascript">
+        $('#booking_modal').on('show.bs.modal', function (event) {
+          $('#booking_modal .modal-content').load('{{ url('booking') }}');
+        })
+    </script>
 {% endblock %}

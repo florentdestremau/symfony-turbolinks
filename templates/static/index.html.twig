@@ -57,7 +57,7 @@
 {% block javascripts %}
     <script type="application/javascript">
         $('#booking_modal').on('show.bs.modal', function (event) {
-          $('#booking_modal .modal-content').load('{{ url('booking') }}');
+          $('#booking_modal .modal-content').load('{{ url('booking', {}, true) }}');
         })
     </script>
 {% endblock %}

@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use Helthe\Component\Turbolinks\Turbolinks;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,7 +12,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 class StaticController extends AbstractController
 {
     /**
-     * @Route("/", name="static")
+     * @Route("/", name="index")
      */
     public function index(): Response
     {
@@ -26,33 +25,30 @@ class StaticController extends AbstractController
     }
 
     /**
-     * @Route("/static-two", name="static-2")
+     * @Route("/other", name="other")
      */
-    public function index2(Request $request): Response
+    public function other(Request $request): Response
     {
+        sleep(1);
+
         return $this->render(
-            'static/index-2.html.twig',
+            'static/other.html.twig',
             [
                 'controller_name' => 'StaticController',
-                'token'           => $request->query->get('token'),
-                'data'           => $request->query->get('data'),
+                'data'            => $request->query->get('data'),
             ]
         );
     }
 
     /**
-     * @Route("/redirect-to-2", name="redirect_to_2")
+     * @Route("/redirect-to-other", name="redirect_to_other")
      */
     public function redirectToIndex2(): Response
     {
-        $this->addFlash('success', 'Thank you');
+        $this->addFlash('success', 'You have been redirected :)');
 
         return new RedirectResponse(
-            $this->generateUrl(
-                'static-2',
-                ['token' => substr(chunk_split(bin2hex(random_bytes(12)), 4, '-'), 0, -1)],
-                UrlGeneratorInterface::ABSOLUTE_URL
-            )
+            $this->generateUrl('other', [], UrlGeneratorInterface::ABSOLUTE_URL)
         );
     }
 }

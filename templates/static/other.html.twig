@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello StaticController!{% endblock %}
+
+{% block body %}
+
+    <h1>This is the <em>other</em> page</h1>
+    {% if data %}
+        <pre>Your booking data: {{ data|json_encode(constant('JSON_PRETTY_PRINT')) }}</pre>
+    {% endif %}
+    <ul>
+        <li>
+            <a href="{{ url('index') }}">Go to home</a>
+        </li>
+    </ul>
+{% endblock %}

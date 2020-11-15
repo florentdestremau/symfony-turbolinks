@@ -6,12 +6,24 @@
     </button>
 </div>
 <div class="modal-body">
-    <h1>Book this event</h1>
+    <h1>This is a simple form</h1>
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <p>
+            This modal is loaded by <em>AJAX</em> and will be submitted via AJAX too. If you don't comply with
+            server-side validation, it will show you inline errors, or else it will redirect after submit.
+        </p>
+        <p>
+            The constraint you can test is the <code>message</code> field must be at least 10 characters long.
+        </p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     {{ form_widget(form) }}
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-    <button type="submit" id="booking_submit" class="btn btn-primary">Save changes</button>
+    <button type="submit" id="booking_submit" class="btn btn-primary">Submit</button>
 </div>
 {{ form_end(form) }}
 <script type="application/javascript">
@@ -27,7 +39,7 @@
       error: function (response) {
         console.log(response);
         form.parent('.modal-content').html(response.responseText);
-      }
-    })
-  })
+      },
+    });
+  });
 </script>

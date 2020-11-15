@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Message success!{% endblock %}
+
+{% block body %}
+    <h1>Success page</h1>
+
+    {% if data %}
+        <p>You have successfully submitted a message form</p>
+        <pre>Your booking data: {{ data|json_encode(constant('JSON_PRETTY_PRINT')) }}</pre>
+    {% endif %}
+
+    <ul>
+        <li>
+            <a href="{{ url('index') }}">Go to home</a>
+        </li>
+    </ul>
+{% endblock %}
